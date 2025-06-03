@@ -104,3 +104,28 @@ console.log(res.data);
 }).finally(()=> {
     console.log("Promise resolved");
 })
+
+
+// Async Await :
+
+
+const fetchData = async() => { 
+try {
+    const data = await axios.get("http://cat-fact.herokuapp.com/facts");
+console.log(" Data from an Async Operation:", data);
+} catch(err) {
+    console.log(err);
+}finally {
+    console.log("Hello");
+}
+}
+
+fetchData();
+
+// Or
+
+// async function fetchdata() {
+// const data = axios.get("http://cat-fact.herokuapp.com/facts");
+
+// }
+
