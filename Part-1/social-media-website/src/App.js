@@ -2,15 +2,17 @@ import './App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { Home } from './pages/Home';
 import { Menu } from './pages/Menu';
+import { Profile } from './pages/Profile';
 import { Contact } from './pages/Contact';
-import { Navbar } from './Navbar';
-import { useState } from 'react';
+import { Navbar } from './pages/Navbar';
+import { useState, createContext } from 'react';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 
 
+
+export const AppContext = createContext();
 
 function App() {
-
-// Example of Props drilling
     // const TopComponent = ()=> {
     //     const [state, setState] = useState();
     //     return (
@@ -35,21 +37,35 @@ function App() {
     //         </div>
     //     )
     // }
+
     const [userName, setUserName] = useState("Shubham");
+    const client = new QueryClient({
+    defaultOptions: {
+        queries: {
+        refetchOnWindowFocus: false,
+        },
+    },
+    });
 
     return (
         <div className='App'>
+        <QueryClientProvider client={client}>
+        <AppContext.Provider value = {{userName, setUserName}}>
             <Router>
                 <Navbar/>
                 <Routes>
-                    <Route path="/" element= {<Home username={userName}/>}/>
-                    <Route path="/profile" element= {<Profile username={userName}/>}/>
+                    <Route path="/" element= {<Home/>}/>
+                    <Route path="/profile" element= {<Profile/>}/>
                     <Route path="/contact" element= {<Contact/>}/>
+                    <Route path="/menu" element= {<Menu/>}/>
+
                     <Route path="*" element= {<h1>Page Not Found</h1>}/>
 
                 </Routes>
 
             </Router>
+            </AppContext.Provider>
+            </QueryClientProvider>
 
         </div>
     )
