@@ -1,10 +1,9 @@
 import './App.css';
-import { Counter } from './Counter';
-
+import { Cat } from './Cat';
 
 
 function App() {
-    return <Counter/>
+    return <Cat/>
 }
 
 export default App;
