@@ -1,13 +1,12 @@
-import React from 'react';
 import './App.css';
 import {Provider} from "react-redux";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { Link  } from "react-router-dom";
 import { Home } from './pages/Home';
-import { Menu } from './pages/Menu';
-import { Profile } from './pages/Profile';
+import { Login } from './pages/Login';
 import { Contact } from './pages/Contact';
-import { Navbar } from './pages/Navbar';
 import { store } from './store';
+
 
 function App() {
   return (
@@ -15,13 +14,13 @@ function App() {
 
       <Provider store ={store} >
                   <Router>
-                      <Navbar/>
+                    <Link to="/"> Home</Link>
+                    <Link to="/login"> Login</Link>
+                    <Link to="/logput"> Logout</Link>
                       <Routes>
                           <Route path="/" element= {<Home/>}/>
-                          <Route path="/profile" element= {<Profile/>}/>
+                          <Route path="/login" element= {<Login/>}/>
                           <Route path="/contact" element= {<Contact/>}/>
-                          <Route path="/menu" element= {<Menu/>}/>
-      
                           <Route path="*" element= {<h1>Page Not Found</h1>}/>
       
                       </Routes>
