@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import { Main } from './pages/main';
 import { Login } from './pages/login';
 import { Navbar } from './components/navbar';
-import { CreatePost } from './pages/createPost';
+import { CreatePost } from './pages/create-post/create-post';
 
 
 
