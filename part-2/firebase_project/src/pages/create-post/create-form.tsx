@@ -30,9 +30,9 @@ export const CreateForm = () => {
     const onCreatePost = async (data: CreateFormData) => {
         console.log(data);
         addDoc(postsRef, {
-            title: data.title,
-            description: data.description,
-            username: user?.displayName
+            ...data,
+            username: user?.displayName,
+            userId: user?.uid
         })
 
     }
